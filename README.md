@@ -1,3 +1,3 @@
 # web-lecture
 
-[home](https://yolan-design.io/web-lecture/soutenance/)
+[home](https://yolan-design.github.io/web-lecture/soutenance/)
