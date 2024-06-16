@@ -28,7 +28,7 @@ body {
     position: relative;
     font-size: 2em;
     margin: 0;
-    padding: 5em;
+    padding: 2.5em 5em;
     min-height: 100vh;
     color: var(--color-fill);
     background-color: var(--color-bg);
@@ -72,9 +72,17 @@ wrap-content {
     width: fit-content;
     align-items: flex-start;
 }
+wrap-content.space-child > *:not(:last-child) {
+    margin-bottom: 2em;
+}
 .content-shift {
     margin-right: 20vw;
 }
+
+.size2 {
+    font-size: 0.75em;
+}
+
 
 a, a:visited {
     color: var(--color-accent);
@@ -91,16 +99,71 @@ a:active {
     border-radius: var(--corner-l);
     box-shadow: var(--shadow-1);
 }
-.layout.l-padding {
+.layout.l-p {
     padding: 1em;
 }
-.layout.l-padding > * {
-    border-radius: calc(var(--corner-l) - 1em);
+.layout.l-pp {
+    padding: 2em;
 }
+/* .layout.l-p > * {
+    border-radius: calc(var(--corner-l) - 1em);
+} */
 
 
 video {
     width: 100%;
     max-width: 90vw;
     max-height: 90vh;
+}
+
+
+/*- dys -*/
+/* swirl */
+@keyframes dys-swirl-p {
+    0% { transform: rotateZ(-0.75deg); }
+    10% { transform: rotateZ(-0.75deg); }
+    50% { transform: rotateZ(0deg); }
+    90% { transform: rotateZ(0.75deg); }
+    100% { transform: rotateZ(0.75deg); }
+}
+.dys-swirl > p {
+    cursor: default;
+}
+.dys-swirl, .dys-swirl > p:first-child {
+    position: relative;
+}
+.dys-swirl > p:last-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotateZ(0deg);
+    transform-origin: center;
+    transition: transform-origin 0.2s ease;
+    animation: dys-swirl-p 4s ease-in-out alternate infinite;
+    pointer-events: none;
+}
+
+/* holes */
+p > span {
+    display: inline-block;
+    position: relative;
+}
+p > span:not(:last-child) {
+    margin-right: 0.275em;
+}
+
+.dys-holes span::after {
+    content: "";
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(255,255,255, 0), rgba(255,255,255, 1), rgba(255,255,255, 0.85), rgba(255,255,255, 0));
+    opacity: 0.01;
+    transition: opacity 1.5s ease;
+}
+.dys-holes span.hole::after {
+    opacity: 1;
 }
